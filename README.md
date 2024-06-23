@@ -10,6 +10,7 @@ Allows to demonstrate how to have a paginated table linked to an API.
 ## Resources
 
 - [VueJs](https://vuejs.org/guide/introduction.html)
+- [Pinia](https://pinia.vuejs.org/introduction.html)
 - [Tailwind CSS](https://v2.tailwindcss.com/docs)
 - [Font Awesome free icons](https://fontawesome.com/search?o=r&m=free)
 
@@ -26,6 +27,7 @@ These instructions will guide you to copy the project from the repository and ru
 For the project run you need to have installed:
 
 - VueJs 3
+- Pinia
 - Tailwind CSS
 - Font Awesome free icons
 

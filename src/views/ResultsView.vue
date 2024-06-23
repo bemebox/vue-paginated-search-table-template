@@ -11,7 +11,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="bg-light-blue-50 min-h-screen p-4">
+  <div class="min-h-screen p-4">
     <PaginatedTable />
   </div>
 </template>
