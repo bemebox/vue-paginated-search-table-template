@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import ResultsView from '../views/ResultsView.vue'
+import PaginatedTableView from '../views/PaginatedTableView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,7 +7,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: ResultsView
+      component: PaginatedTableView
     }
   ]
 })

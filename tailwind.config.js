@@ -5,18 +5,18 @@ export default {
     extend: {
       colors: {
         primary: {
-          light: '#93c5fd', // Light Blue
-          DEFAULT: '#3b82f6', // Base Blue (Primary Color)
+          light: '#5e72e4', // Light Blue
+          DEFAULT: '#3b82f6', // Base Blue (Primary Color) 60% rule
           dark: '#1e40af' // Dark Blue
         },
         secondary: {
           light: '#bfdbfe', // Light Variant
-          DEFAULT: '#60a5fa', // Base Secondary Color
+          DEFAULT: '#60a5fa', // Base Secondary Color 30% rule
           dark: '#2563eb' // Dark Variant
         },
         tertiary: {
           light: '#dbeafe', // Light Variant
-          DEFAULT: '#0284c7', // Base Tertiary Color
+          DEFAULT: '#0284c7', // Base Tertiary Color 10% rule
           dark: '#0369a1' // Dark Variant
         },
         background: {
