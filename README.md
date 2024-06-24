@@ -3,6 +3,8 @@
 Paginated Table Template is a web application, built with Vue.js 3 framework.
 Allows to demonstrate how to have a paginated table linked to an API.
 
+For test propose it's used the [Formula One API hosted at Ergast API](https://documenter.getpostman.com/view/11586746/SztEa7bL#intro).
+
 ![Paginated Table Sample](./documentation/images/PaginatedTableSample.png)
 
 ## Version

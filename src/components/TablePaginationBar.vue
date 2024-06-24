@@ -1,33 +1,40 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
+import { useCircuitStore } from '@/stores/circuitstore'
 
 export default defineComponent({
   name: 'TablePaginationBar',
   setup() {
-    const currentPage = computed(() => 1)
-    const totalPages = computed(() => 2)
+    const circuitStore = useCircuitStore()
+    const currentPage = computed(() => circuitStore.currentPage)
+    const totalPages = computed(() => circuitStore.totalPages)
 
     const firstPage = () => {
-      // Handle first page logic here
+      if (currentPage.value > 1) {
+        circuitStore.getPageData(1)
+      }
     }
 
     const previousPage = () => {
-      // Handle previous page logic here
+      if (currentPage.value > 1) {
+        circuitStore.getPageData(currentPage.value - 1)
+      }
     }
 
     const setPage = (pageNumber: number) => {
-      // Handle next page logic here
-      alert('set page ' + pageNumber)
+      circuitStore.getPageData(pageNumber)
     }
 
     const nextPage = () => {
-      // Handle next page logic here
-      alert('next page ')
+      if (currentPage.value < totalPages.value) {
+        circuitStore.getPageData(currentPage.value + 1)
+      }
     }
 
     const lastPage = () => {
-      // Handle last page logic here
-      alert('last page ')
+      if (currentPage.value < totalPages.value) {
+        circuitStore.getPageData(totalPages.value)
+      }
     }
 
     return {
@@ -44,20 +51,30 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="mx-auto text-primary">
+  <div v-if="totalPages > 0" class="mx-auto text-primary">
     <nav class="w-full flex justify-center bg-secondary">
       <ul class="list-style-none flex p-2">
         <li @click="firstPage" class="px-1">
           <font-awesome-icon
             icon="arrow-right-to-bracket"
-            class="relative block rounded-full border border-text-dark bg-transparent px-2.5 py-2.5 text-white text-sm rotate-180"
+            :class="{
+              'cursor-default text-secondary-light border-secondary-light': 1 === currentPage,
+              'cursor-pointer border border-tertiary-dark text-tertiary-dark hover:bg-tertiary-dark hover:text-text-dark hover:border-transparent':
+                1 !== currentPage
+            }"
+            class="relative block rounded-full border bg-transparent px-2.5 py-2.5 text-sm rotate-180"
             title="First Page"
           />
         </li>
         <li @click="previousPage" class="px-1">
           <font-awesome-icon
             icon="arrow-left"
-            class="relative block rounded-full border border-text-dark bg-transparent px-2.5 py-2.5 text-white text-sm"
+            :class="{
+              'cursor-default text-secondary-light border-secondary-light': 1 === currentPage,
+              'cursor-pointer border border-tertiary-dark text-tertiary-dark hover:bg-tertiary-dark hover:text-text-dark hover:border-transparent':
+                1 !== currentPage
+            }"
+            class="relative block rounded-full border bg-transparent px-2.5 py-2.5 text-sm"
             title="Previous Page"
           />
         </li>
@@ -77,14 +94,26 @@ export default defineComponent({
         <li @click="nextPage" class="px-1">
           <font-awesome-icon
             icon="arrow-right"
-            class="relative block rounded-full border border-tertiary-dark bg-transparent px-2.5 py-2.5 text-tertiary-dark text-sm cursor-pointer text-surface transition duration-300 hover:bg-tertiary-dark hover:text-text-dark hover:border-transparent"
+            :class="{
+              'cursor-default text-secondary-light border-secondary-light':
+                totalPages === currentPage,
+              'cursor-pointer border border-tertiary-dark text-tertiary-dark hover:bg-tertiary-dark hover:text-text-dark hover:border-transparent':
+                totalPages !== currentPage
+            }"
+            class="relative block rounded-full border bg-transparent px-2.5 py-2.5 text-sm"
             title="Next Page"
           />
         </li>
         <li @click="lastPage" class="px-1">
           <font-awesome-icon
             icon="arrow-right-to-bracket"
-            class="relative block rounded-full border border-tertiary-dark bg-transparent px-2.5 py-2.5 text-tertiary-dark text-sm cursor-pointer text-surface transition duration-300 hover:bg-tertiary-dark hover:text-text-dark hover:border-transparent"
+            :class="{
+              'cursor-default text-secondary-light border-secondary-light':
+                totalPages === currentPage,
+              'cursor-pointer border border-tertiary-dark text-tertiary-dark hover:bg-tertiary-dark hover:text-text-dark hover:border-transparent':
+                totalPages !== currentPage
+            }"
+            class="relative block rounded-full border bg-transparent px-2.5 py-2.5 text-sm"
             title="Last Page"
           />
         </li>
